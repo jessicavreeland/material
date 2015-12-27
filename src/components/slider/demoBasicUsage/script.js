@@ -1,7 +1,10 @@
 
 angular.module('sliderDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet('device', 'img/icons/sets/device-icons.svg', 24);
+  })
+.controller('AppCtrl', function($scope, $timeout) {
 
   $scope.color = {
     red: Math.floor(Math.random() * 255),
@@ -13,7 +16,13 @@ angular.module('sliderDemo1', ['ngMaterial'])
   $scope.rating2 = 2;
   $scope.rating3 = 4;
 
-  $scope.disabled1 = 0;
-  $scope.disabled2 = 70;
+  $scope.disabled1 = Math.floor(Math.random() * 100);
+  $scope.disabled2 = 0;
+  $scope.disabled3 = 70;
 
+
+  $timeout(function () {
+    $scope.isDisabled = true;
+
+  }, 8000)
 });
